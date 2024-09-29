@@ -36,7 +36,7 @@ def ocr_image(image_base64):
                         }
                     },
                     {
-                        "text": "Gambar ini jadikan text full ya"
+                        "text": "Gambar ini jadikan text tanpa adanya komentar # dan tanpa penbalan text **"
                     }
                 ]
             }
