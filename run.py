@@ -93,7 +93,7 @@ def handle_ocr_command(message):
             except Exception as e:
                 bot.reply_to(message, f"Terjadi kesalahan: {str(e)}")
         else:
-            bot.reply_to(message, "Di grup, balas gambar dengan perintah /ocr.")
+            pass
     else:
         bot.reply_to(message, "Kirim gambar atau URL gambar yang ingin di-OCR.")
 
