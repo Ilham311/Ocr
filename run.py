@@ -139,7 +139,6 @@ def handle_link(message):
         except Exception as e:
             bot.reply_to(message, f"Terjadi kesalahan: {str(e)}")
     elif message.chat.type in ['group', 'supergroup']:
-        bot.reply_to(message, "Di grup, balas gambar dengan perintah /ocr.")
-
+        pass
 # Mulai bot
 bot.polling()
