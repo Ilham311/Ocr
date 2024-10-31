@@ -161,7 +161,7 @@ def redirect_page():
 
 # Fungsi untuk menjalankan Flask di thread terpisah
 def run_flask():
-    app.run(port=5000)
+    app.run(host='0.0.0.0', port=3000)
 
 # Fungsi untuk menjalankan bot Telegram dengan mekanisme restart otomatis
 def run_bot():
@@ -170,8 +170,7 @@ def run_bot():
             bot.polling(none_stop=True)
         except Exception as e:
             print(f"Bot berhenti dengan error: {e}")
-            
-              
+            time.sleep(1)  # Tunggu sebelum mencoba polling lagi
 
 # Main
 if __name__ == '__main__':
