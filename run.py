@@ -45,7 +45,7 @@ def ocr_image(image_base64):
 
     headers = {
         "Host": "generativelanguage.googleapis.com",
-        "x-goog-api-key": "AIzaSyCAjkQDlbabh_93X3JoqXUbWttWHP9DjnU",
+        "x-goog-api-key": "AIzaSyDDCW5QvaFRgN9UyxvLLFLW_L6FhiK91Io",
         "x-goog-api-client": "genai-android/0.9.0",
         "accept": "application/json",
         "accept-charset": "UTF-8",
