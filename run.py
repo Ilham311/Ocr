@@ -36,7 +36,9 @@ def ocr_image(image_base64):
                         }
                     },
                     {
-                        "text": "Gambar ini jadikan text tanpa adanya komentar # dan tanpa penbalan text **"
+                        "text": "Identify and extract all text visible in this image. Return only the extracted text, without any additional commentary.Don't give repetations and don't give something which might not be relevant to shop name"
+                
+             
                     }
                 ]
             }
@@ -59,8 +61,9 @@ def ocr_image(image_base64):
         json=payload,
         headers=headers
     )
-    
+    print(response.text)
     if response.status_code == 200:
+        
         json_response = response.json()
         candidates = json_response.get('candidates', [])
         if candidates:
