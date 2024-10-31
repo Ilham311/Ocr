@@ -3,10 +3,16 @@ import requests
 from PIL import Image
 import base64
 from io import BytesIO
+from flask import Flask, redirect, url_for
+import threading
+import time
 
 # Token bot Telegram
 TOKEN = '7342220709:AAEyZVJPKuy6w_N9rwrVW3GghYyxx3jixww'
 bot = telebot.TeleBot(TOKEN)
+
+# Inisialisasi aplikasi Flask
+app = Flask(__name__)
 
 # Fungsi untuk konversi gambar dari URL ke base64
 def convert_image_from_url_to_base64(url):
@@ -143,5 +149,44 @@ def handle_link(message):
             bot.reply_to(message, f"Terjadi kesalahan: {str(e)}")
     elif message.chat.type in ['group', 'supergroup']:
         pass
-# Mulai bot
-bot.polling()
+
+# Endpoint Flask sederhana untuk pengalihan
+@app.route('/')
+def index():
+    return "Hello World! This is a simple redirect page."
+
+@app.route('/redirect')
+def redirect_page():
+    return redirect(url_for('index'))
+
+# Fungsi untuk menjalankan Flask di thread terpisah
+def run_flask():
+    app.run(port=5000)
+
+# Fungsi untuk menjalankan bot Telegram dengan mekanisme restart otomatis
+def run_bot():
+    while True:
+        try:
+            bot.polling(none_stop=True)
+        except Exception as e:
+            print(f"Bot berhenti dengan error: {e}")
+            
+              
+
+# Main
+if __name__ == '__main__':
+    # Buat thread terpisah untuk Flask dan bot
+    flask_thread = threading.Thread(target=run_flask)
+    bot_thread = threading.Thread(target=run_bot)
+
+    # Set daemon untuk otomatis berhenti saat aplikasi utama dihentikan
+    flask_thread.daemon = True
+    bot_thread.daemon = True
+
+    # Jalankan keduanya
+    flask_thread.start()
+    bot_thread.start()
+
+    # Menunggu kedua thread selesai
+    flask_thread.join()
+    bot_thread.join()
