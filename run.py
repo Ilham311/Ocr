@@ -42,7 +42,7 @@ def ocr_image(image_base64):
                         }
                     },
                     {
-                        "text": "Identify and extract all text visible in this image. Return only the extracted text, without any additional commentary.Don't give repetations and don't give something which might not be relevant to shop name"
+                        "text": "Identify and extract all text visible"
                 
              
                     }
