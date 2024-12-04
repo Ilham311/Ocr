@@ -8,7 +8,7 @@ import threading
 import time
 
 # Token bot Telegram
-TOKEN = '7342220709:AAEyZVJPKuy6w_N9rwrVW3GghYyxx3jixww'
+TOKEN = '6324930447:AAEK_w2_6XELCbkpVLwPN0_Sm4pfaZYv1G0'
 bot = telebot.TeleBot(TOKEN)
 
 # Inisialisasi aplikasi Flask
